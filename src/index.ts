@@ -1,6 +1,7 @@
 import MarkdownIt from "markdown-it";
 import { minify } from "html-minifier";
 import { readFileSync } from "fs";
+import { style } from "./style";
 import { ArticleMetadata, Options } from "./dto";
 
 const markdownIt = new MarkdownIt({
@@ -10,7 +11,7 @@ const markdownIt = new MarkdownIt({
 });
 
 
-const cssStyle = readFileSync(__dirname + '/style.css', 'utf8');
+const cssStyle = style;
 
 export const articleToHtml = (article: ArticleMetadata, options?: Options) => {
     const renderedArticle = markdownIt.render(article.markdown)

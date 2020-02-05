@@ -1,4 +1,4 @@
-html, body {
+export const style = `html, body {
   margin: 0;
   padding: 0;
 }
@@ -100,4 +100,4 @@ footer {
     font-weight: 400;
     color: #b2b2b2;
     line-height: 1.5;
-}
+}`
