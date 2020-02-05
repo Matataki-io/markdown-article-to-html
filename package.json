@@ -1,0 +1,23 @@
+{
+  "name": "markdown-article-to-html",
+  "version": "1.0.0",
+  "description": "Convert your article with markdown to the simple one file HTML",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
+  "author": "Frank Wei (https://github.com/frankwei98)",
+  "license": "MIT",
+  "dependencies": {
+    "@types/html-minifier": "^3.5.3",
+    "@types/markdown-it": "^0.0.9",
+    "html-minifier": "^4.0.0",
+    "markdown-it": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "typescript": "^3.7.5"
+  }
+}
