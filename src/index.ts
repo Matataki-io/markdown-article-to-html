@@ -1,12 +1,12 @@
 import MarkdownIt from "markdown-it";
 import { minify } from "html-minifier";
-import { readFileSync } from "fs";
 import { style } from "./style";
 import { ArticleMetadata, Options } from "./dto";
 
 const markdownIt = new MarkdownIt({
     html: true,
     linkify: true,
+    breaks: true,
     typographer: true
 });
 
