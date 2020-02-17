@@ -1,6 +1,6 @@
 {
   "name": "markdown-article-to-html",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert your article with markdown to the simple one file HTML",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
