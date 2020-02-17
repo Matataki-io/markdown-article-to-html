@@ -1,5 +1,6 @@
 import MarkdownIt from "markdown-it";
 import { minify } from "html-minifier";
+import hljs from "highlight.js";
 import { style } from "./style";
 import { ArticleMetadata, Options } from "./dto";
 
@@ -7,7 +8,17 @@ const markdownIt = new MarkdownIt({
     html: true,
     linkify: true,
     breaks: true,
-    typographer: true
+    typographer: true,
+    highlight: function (str, lang) {
+      if (lang && hljs.getLanguage(lang)) {
+        try {
+          return '<pre class="hljs"><code>' +
+          hljs.highlight(lang, str, true).value +
+          '</code></pre>';
+        } catch (__) {}
+      }
+      return ''; // use external default escaping
+    }
 });
 
 
@@ -49,7 +60,10 @@ export const articleToHtml = (article: ArticleMetadata, options?: Options) => {
           免责声明：本文由 瞬 Matataki 用户「${article.author.nickname}」上传发布，内容为作者独立观点。仅代表作者本人立场，不构成投资建议，请谨慎对待。<br/>
           Disclaimer: The above content is user-generated content, it does not represent the views of this site, and does not constitute investment advice.</footer>
         </main>
-    </body></html>`
+    </body>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/solarized-light.min.css">
+    </html>`
     if (options?.minify) {
         html = minify(html)
     }
